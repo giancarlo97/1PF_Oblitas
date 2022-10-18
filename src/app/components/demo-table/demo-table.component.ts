@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Curso } from 'src/app/models/curso';
+import { Alumno } from 'src/app/models/alumno';
 
 @Component({
   selector: 'app-demo-table',
@@ -49,6 +50,30 @@ export class DemoTableComponent implements OnInit {
   columnas: string[] = ['nombre', 'comision', 'profesor', 'fechaInicio', 'fechaFin', 'inscripcionAbierta', 'acciones'];
   dataSource: MatTableDataSource<Curso> = new MatTableDataSource<Curso>(this.cursos);
 
+  alumnos: Alumno[] = [
+    {
+      nombre: 'Mario',
+      apellido: 'Perez',
+      comision: '11111',
+      imagen: 'https://parentesis.com/imagesPosts/coder00.jpg'
+    },
+    {
+      nombre: 'Carlos',
+      apellido: 'Perez',
+      comision: '12222',
+      imagen: 'https://parentesis.com/imagesPosts/coder00.jpg'
+    },
+    {
+      nombre: 'Marta',
+      apellido: 'Perez',
+      comision: '55555',
+      imagen: 'https://parentesis.com/imagesPosts/coder00.jpg'
+    },
+
+  ];
+  columnas2: string[] = ['nombre','apellido','comision','acciones2'];
+  dataSource2: MatTableDataSource<Alumno> = new MatTableDataSource<Alumno>(this.alumnos);
+
   constructor() { }
 
   ngOnInit(): void {
@@ -73,8 +98,31 @@ export class DemoTableComponent implements OnInit {
 
   }
 
+  filtrarNombre(event2: Event){
+    const valorObtenido = (event2.target as HTMLInputElement).value;
+    this.dataSource2.filter = valorObtenido.trim().toLowerCase();
+    this.dataSource2.filterPredicate = function(alumno: Alumno, filtro: string){
+      return alumno.nombre.toLocaleLowerCase().includes(filtro.toLocaleLowerCase());
+    };
+    this.dataSource2.filter = valorObtenido.trim().toLowerCase();
+  }
+
+  filtrarComision2(event2: Event){
+    const valorObtenido = (event2.target as HTMLInputElement).value;
+    this.dataSource2.filter = valorObtenido.trim().toLowerCase();
+    this.dataSource2.filterPredicate = function(alumno: Alumno, filtro: string){
+      return alumno.comision.toLocaleLowerCase().includes(filtro.toLocaleLowerCase());
+    };
+    this.dataSource2.filter = valorObtenido.trim().toLowerCase();
+
+  }
+
   editar(){
     console.log(this.cursos);
+  }
+
+  editar2(){
+    console.log(this.alumnos);
   }
 
 }

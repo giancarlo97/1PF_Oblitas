@@ -13,6 +13,7 @@ import { FiltroCursosPipe } from './pipes/filtro-cursos.pipe';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { StudentComponent } from './components/student/student.component';
+import { FiltroAlumnosPipe } from './pipes/filtro-alumnos.pipe';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { StudentComponent } from './components/student/student.component';
     NavbarComponent,
     ToolbarComponent,
     StudentComponent,
+    FiltroAlumnosPipe,
   ],
   imports: [
     BrowserModule,

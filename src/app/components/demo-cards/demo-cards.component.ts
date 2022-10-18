@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Curso } from 'src/app/models/curso';
+import { Alumno } from 'src/app/models/alumno';
 
 @Component({
   selector: 'app-demo-cards',
@@ -47,9 +48,30 @@ export class DemoCardsComponent implements OnInit {
     }
   ];
 
+  filtro2: string ='';
+  alumnos: Alumno[] = [
+    {
+      nombre: 'Mario',
+      apellido: 'Perez',
+      comision: '11111',
+      imagen: 'https://parentesis.com/imagesPosts/coder00.jpg'
+    },
+    {
+      nombre: 'Carlos',
+      apellido: 'Perez',
+      comision: '12222',
+      imagen: 'https://parentesis.com/imagesPosts/coder00.jpg'
+    },
+    {
+      nombre: 'Marta',
+      apellido: 'Perez',
+      comision: '55555',
+      imagen: 'https://parentesis.com/imagesPosts/coder00.jpg'
+    },
+
+  ];
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }
